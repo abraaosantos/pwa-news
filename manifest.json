@@ -3,6 +3,7 @@
     "short_name": "PWA News",
     "orientation": "portrait",
     "display": "standalone",
+    "start_url": "/index.html",
     "icons": [
         {
             "src": "/image/android-chrome-192x192.png",
