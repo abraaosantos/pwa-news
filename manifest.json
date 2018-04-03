@@ -1,0 +1,13 @@
+{
+    "name": "App Curso PWA",
+    "short_name": "PWA News",
+    "orientation": "portrait",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/image/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        }
+    ]
+}
