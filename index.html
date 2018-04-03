@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>PWA NEWS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col col-lg-2"></div>
+                <div class="col-md-auto text-center">
+                    <h2 class="header-logo text-success">PWA News</h2>
+                </div>
+                <div class="col col-lg-2"></div>
+            </div>
+        </header>
+
+        <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li id="headline" class="nav-item active">
+                        <a class="nav-link" href="#">Headline</a>
+                    </li>
+                    <li id="health" class="nav-item">
+                        <a class="nav-link" href="#">Health</a>
+                    </li>
+                    <li id="sports" class="nav-item">
+                        <a class="nav-link" href="#">Sports</a>
+                    </li>
+                    <li id="entertainment" class="nav-item">
+                        <a class="nav-link" href="#">Entertainment</a>
+                    </li>
+                    <li id="technology" class="nav-item">
+                        <a class="nav-link" href="#">Technology</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Field Search">
+                </form>
+            </div>
+        </nav>
+
+        <section class="container-fluid">
+            <div id="top-news" class="row jumbotron jumbotron-fluid p-3 m-1 p-md-5 text-white rounded bg-dark">
+                <div class="col-12 col-sm-6 px-0">
+                    <h4 id="top-news-title" class="font-italic"></h4>
+                    <p id="top-news-description" class="lead my-3"></p>
+                    <p class="lead mb-0">
+                        <a href="#" target="_blank" id="top-news-link" class="text-white font-weight-bold">Continue reading...</a>
+                    </p>
+                </div>
+                <div class="col-12 col-sm-6 px-0 d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                    <figure class="figure">
+                        <img id="top-news-image" src="#" />
+                    </figure>
+                </div>
+            </div>
+            <div id="news" class="row justify-content-around"></div>
+        </section>
+    </div>
+
+    <footer>
+        <p>PWA NEWS - Version: 0.1.1</p>
+    </footer>
+
+    <script src="library/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="library/moment.min.js"></script>
+
+    <script src="js/api.js"></script>
+    <!-- <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw-pwa-news.js')
+                .then(function (registration) {
+                    console.log('Registrado com scope', registration)
+                }).catch(function (error) {
+                    console.error(error)
+                })
+        }
+    </script> -->
+
+</body>
+
+</html>
