@@ -50,7 +50,7 @@
     // Cache First
     // Verifica no cache, se já tem retorna. Se não, vai no servidor e retorna
     self.addEventListener('fetch', function (event) {
-        if (event.request.url.indexof(API) === -1) {
+        if (event.request.url.indexOf(API) === -1) {
             event.respondWith(
                 caches.match(event.request)
                     .then(function (response) {

@@ -5,6 +5,16 @@
     <meta charset="utf-8">
     <!-- adicionar icones com https://realfavicongenerator.net/ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="msapplication-config" content="/icons/browserconfig.xml">
+    <meta name="theme-color" content="#ffffff">
     
     <title>PWA NEWS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -23,6 +33,10 @@
                 </div>
                 <div class="col col-lg-2"></div>
             </div>
+            <button id="bt-install" class="hide navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="file-download"></span>
+            </button>
         </header>
 
         <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light">
@@ -85,6 +99,7 @@
     <script src="library/moment.min.js"></script>
 
     <script src="js/api.js"></script>
+    <script src="js/install-banner.js"></script>
     <script>
         if ('serviceWorker' in navigator) {
 
