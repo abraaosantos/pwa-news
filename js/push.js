@@ -34,12 +34,13 @@
         }
 
         function registerUser(){
-            swPush.pushManager.subscribe({
-                userVisibleOnly: true,
-                applicationServerKey: urlB64ToUint8Array(publicKey)
-            }).then(function (subscription){
-                console.log(JSON.stringify(subscription))
-            });
+            // Comentado pois estava ocorrendo erro na chamada do server.
+            // swPush.pushManager.subscribe({
+            //     userVisibleOnly: true,
+            //     applicationServerKey: urlB64ToUint8Array(publicKey)
+            // }).then(function (subscription){
+            //     console.log(JSON.stringify(subscription))
+            // });
         }
 
         

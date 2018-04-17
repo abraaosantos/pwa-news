@@ -6,6 +6,8 @@
     <!-- adicionar icones com https://realfavicongenerator.net/ -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="Description" content="PWA news">
+
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
@@ -33,10 +35,6 @@
                 </div>
                 <div class="col col-lg-2"></div>
             </div>
-            <button id="bt-install" class="hide navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="file-download"></span>
-            </button>
         </header>
 
         <nav class="navbar navbar-toggleable-md navbar-expand-lg navbar-light">
@@ -62,6 +60,14 @@
                         <a class="nav-link" href="#">Technology</a>
                     </li>
                 </ul>
+                <button id="bt-install" class="hide navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons">file_download</i>
+            </button>
+                <button id="bt-alert" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="material-icons">add_alert</i>
+                </button>
                 <form class="form-inline my-2 my-lg-0">
                     <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Field Search">
                 </form>

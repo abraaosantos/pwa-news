@@ -10,6 +10,9 @@
     var PAGE_SIZE = 'pageSize=16';
     var API_KEY = 'apiKey=c5a59e6e745f45849e2e56af4efad07d';
 
+    var btAlert = $("#bt-alert");
+
+
     getNews();
 
     var permissionNotification = false;
@@ -17,45 +20,62 @@
     if ('Notification' in window) {
         permissionNotification = Notification.permission;
 
-        // Se é possível enviar notificação
-        // Solicita a permissão para o envio de notificações
-        if (permissionNotification) {
-            console.log('Request permission');
+        if (permissionNotification === 'default') {
+            btAlert.show();
+        }
+
+        btAlert.click(function () {
+
             Notification.requestPermission(function (perm) {
                 permissionNotification = perm;
+                if (permissionNotification !== 'default') {
+                    btAlert.hide();
+                }
             });
+
+        })
+
+        window.onblur = function onBlur() {
+            console.log('saiu');
+            if (permissionNotification === 'granted') {
+                setTimeout(function () {
+                    navigator.serviceWorker.getRegistration()
+                        .then(
+                            function (reg) {
+                                var options =
+                                    {
+                                        body: 'Lula foi...',
+                                        icon: 'icons/android-chrome-192x192.png',
+                                        badge: 'icons/android-chrome-192x192.png'
+                                    };
+                                reg.showNotification('Ei tem novas notícias =)', options);
+                            }
+                        )
+                }, 3000);
+            }
         }
+
+        // Se é possível enviar notificação
+        // Solicita a permissão para o envio de notificações
+        // if (permissionNotification) {
+        //     console.log('Request permission');
+        //     Notification.requestPermission(function (perm) {
+        //         permissionNotification = perm;
+        //     });
+        // }
     }
 
 
 
-    window.onblur = function onBlur() {
-        console.log('saiu');
-        if (permissionNotification) {
-            setTimeout(function () {
-                navigator.serviceWorker.getRegistration()
-                .then(
-                    function (reg){
-                        var options = 
-                        {
-                            body: 'Lula foi...',
-                            icon: 'icons/android-chrome-192x192.png',
-                            badge: 'icons/android-chrome-192x192.png'
-                        };
-                        reg.showNotification('Ei tem novas notícias =)', options);
-                    }
-                )
-            }, 3000);
-        }
-    }
 
-    if ("ondevicelight" in window){
+
+    if ("ondevicelight" in window) {
         window.addEventListener("deviceLight", onUpdateDeviceLight);
-    }else{
+    } else {
         console.log("There is no ondevicelight")
     }
 
-    function onUpdateDeviceLight(event){
+    function onUpdateDeviceLight(event) {
         var colorPart = Math.min(255, event.value).toFixed(0);
         document.getElementById("body").style.backgroundColor = `rgb(${colorPart},${colorPart},${colorPart})`;
     }
