@@ -10,19 +10,18 @@
 
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
-    <link rel="manifest" href="/icons/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">    
     <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#5bbad5">
     <link rel="shortcut icon" href="/icons/favicon.ico">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="msapplication-config" content="/icons/browserconfig.xml">
     <meta name="theme-color" content="#ffffff">
-    
+
     <title>PWA NEWS</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="./manifest.json">
 </head>
 
 <body>
@@ -42,6 +41,13 @@
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            <div id="online" class="hide">
+                <i class="material-icons">network_wifi</i>
+            </div>
+            <div id="offline" class="hide">
+                <i class="material-icons">signal_wifi_off</i>
+            </div>
+                        
             <div class="collapse navbar-collapse justify-content-md-center" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li id="headline" class="nav-item active">
@@ -61,13 +67,13 @@
                     </li>
                 </ul>
                 <button id="bt-install" class="hide navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="material-icons">file_download</i>
-            </button>
-                <button id="bt-alert" class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="material-icons">add_alert</i>
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="material-icons">file_download</i>
                 </button>
+                <button id="bt-alert" class="hide navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="material-icons">add_alert</i>
+                </button>               
                 <form class="form-inline my-2 my-lg-0">
                     <input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Field Search">
                 </form>
@@ -103,7 +109,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
     <script src="library/moment.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
     <script src="js/api.js"></script>
     <script src="js/install-banner.js"></script>
     <script src="js/push.js"></script>
@@ -111,13 +118,13 @@
         if ('serviceWorker' in navigator) {
 
             // Aguarda o carregamento do shell da aplicação para então registrar o service worker
-            window.addEventListener('load', function(){
+            window.addEventListener('load', function () {
                 navigator.serviceWorker.register('sw-pwa-news.js')
-                .then(function (registration) {
-                    console.log('Registrado com scope', registration)
-                }).catch(function (error) {
-                    console.error(error)
-                })
+                    .then(function (registration) {
+                        console.log('Registrado com scope', registration)
+                    }).catch(function (error) {
+                        console.error(error)
+                    })
             })
         }
     </script>

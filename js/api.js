@@ -10,8 +10,12 @@
     var PAGE_SIZE = 'pageSize=16';
     var API_KEY = 'apiKey=c5a59e6e745f45849e2e56af4efad07d';
 
+    var GOOGLE_MAPS_API = 'http://maps.googleapis.com/maps/api/geocode/json?sensor=false&latlng=';
+    var GM_API_KEY = '';
+
     var btAlert = $("#bt-alert");
 
+    var interactionMade = false;
 
     getNews();
 
@@ -49,6 +53,7 @@
                                         badge: 'icons/android-chrome-192x192.png'
                                     };
                                 reg.showNotification('Ei tem novas notícias =)', options);
+                                vibrate200();
                             }
                         )
                 }, 3000);
@@ -80,8 +85,16 @@
         document.getElementById("body").style.backgroundColor = `rgb(${colorPart},${colorPart},${colorPart})`;
     }
 
-    function getNews() {
-        var url = API + ENDPOINT_HEADLINES + 'country=br&' + PAGE_SIZE + '&' + API_KEY + getCategory();
+    function getNews(country) {
+        var url = API + ENDPOINT_HEADLINES + PAGE_SIZE + '&' + API_KEY + getCategory();
+
+        if (country) {
+            url += '&country=' + country;
+        } else {
+            // Por padrão carrega notícias dos Estados Unidos
+            url += '&country=US';
+        }
+
         $.get(url, success);
     }
 
@@ -204,6 +217,54 @@
                     })
             );
         }
+    }
+
+    // Vibration    
+    function vibrate200() {
+        if ('vibrate' in navigator && interactionMade) {
+            navigator.vibrate(200);
+        }
+    } 
+    
+    /**********************   Connection check   - BEGIN **********************/
+
+    var divOnline = $("#online");
+    var divOffline = $("#offline");
+
+    if(navigator.onLine){
+        showOnlineIcon();
+    }else{
+        showOfflineIcon();
+    }
+
+    window.addEventListener('online', showOnlineIcon);
+    window.addEventListener('offline', showOfflineIcon);
+
+    function showOnlineIcon(){
+        console.log('online show');
+        divOffline.hide();
+        divOnline.show();
+        vibrate200();
+    }
+
+    function showOfflineIcon(){
+
+        divOnline.hide();
+        divOffline.show();
+        vibrate200();
+
+    }
+
+    /**********************   Connection check   - END **********************/
+
+    document.addEventListener('touchstart', interactionDetected);
+    document.addEventListener('touchmove', interactionDetected);
+
+    document.addEventListener('pointerdown', interactionDetected);
+    document.addEventListener('pointermove', interactionDetected);
+
+    function interactionDetected(e){
+        interactionMade = true;
     }
 
 })();
